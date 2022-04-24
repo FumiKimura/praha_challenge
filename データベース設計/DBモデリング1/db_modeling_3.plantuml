@@ -9,7 +9,7 @@ entity 顧客 {
 }
 
 entity 来店データ {
-    来店(PK)
+    来店ID(PK)
     顧客ID(FK)
     店舗ID(FK)
     来店時間
