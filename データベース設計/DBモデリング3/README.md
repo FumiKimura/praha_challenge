@@ -1,5 +1,6 @@
 ## データベースモデリング3
 
+### 隣接リスト ver.
 ![My Image](./dbmodelling3.png)
 
 ### 各テーブルの目的
@@ -46,3 +47,17 @@
 ```
   - APIについて
     - ドラグ・アンド・ドロップでAirtableの順番を変更したところ、idとpositionのような値をpostで飛ばしていました。
+
+### 閉包テーブル ver
+
+![My Image](./dbmodelling3_Closure_Table.png)
+
+- 基本的な構造は隣接リストverと変わりません
+  - 大きな違いはディレクトリの構造管理に閉包テーブルを使用しているところです
+- 変更点
+  - Directory_Treeテーブルを追加
+  - Directoriesからtop_levelとparent_idを削除
+- 閉包テーブルは自己参照(自分自身をparent_id)として登録できる
+  - これによりtop_level (Bool)のカラムが必要なくなる
+- 閉包テーブル参照記事
+  - https://qiita.com/ftsan/items/d11c47e81508b92426fb
