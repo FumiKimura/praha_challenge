@@ -27,7 +27,7 @@ SQLアンチパターンから
 
 ## 課題2
 交差テーブルを作成し各PostとTagを紐付ける
-![image](./dbmodelling6.png)
+![image](./antipattern1.png)
 
 ## 課題3
 - IoT機器に接続して測定を行うセンサーの測定機能
