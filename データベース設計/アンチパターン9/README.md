@@ -25,6 +25,9 @@
   - 結論: Triggerを使用しない(ドキュメント化 or ルール化されていれば可)
     - 理由: ユーザーを削除するロジックはビジネスロックなのでアプリケーション側で一括管理した方が良い
     - Userテーブルからの削除はアプリケーション側で、WithdrawUserへの挿入はTrigger(DB側)だと管理が煩雑になるから
+  - DBMSによってはMaterialized Viewがデフォルトでないものもある
+    - MySQLにはMaterialized Viewがでデフォルトの機能としてないので、Triggerを使用してMaterialized Viewの代わりとなるテーブルのデータを維持する上で使用する
+    - [MySQLでMaterialized Viewを実現する](https://tech.excite.co.jp/entry/2022/02/07/174804)
 
 - 「gender」カラムには「male」「female」「no response」のいずれかしかない(Enumを使うべきか)
   - 結論: 値セットが変わらない限り使用して問題ない
