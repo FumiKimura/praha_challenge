@@ -47,12 +47,28 @@
       2. 課題1の方法だとデータ混濁のリスクがある
          1. WHERE句付け忘れ
 
-#### RLSと、RLSを活用したマルチテナントアーキテクチャの実装方法
-- GoとPostgresを使って実装しました
-- middle
+#### RLSを活用したマルチテナントアーキテクチャの実装方法
+- ~~GoとPostgresを使って実装しました~~RLSを正しく設定するところでハマったので休止
+- アプローチ
+  - リクエストにテナントIDを挿入、データベースにセッション変数として引き渡す
 
+- サーバー -> データベース間の通信
+  - セッション変数にテナントIDを設定してRLSに引き渡す
+```
+ALTER TABLE tenants ENABLE ROW LEVEL SECURITY;
+CREATE POLICY tenant_isolation_policy ON tenants 
+USING (tenant_id = current_setting('app.current_tenant_id')::INTEGER);
+```
 
-参考文献
+[参考記事](https://medium.com/@vivekmadurai/multi-tenancy-in-rest-api-a570d728620c)
+
+- ユーザーリクエスト -> サーバーへテナントIDを引き渡す
+   - 主に4つのアプローチがある(クエリ・パラメタ、パス・パラメタ、HTTPヘッダー、サブドメイン）
+   - 記事によるとパス・パラメタが使用させることが多く、個人的にもシンプルかと思います
+
+[参考記事](https://medium.com/@vivekmadurai/multi-tenancy-in-rest-api-a570d728620c)
+
+その他参考文献
 - [RLSを用いたマルチテナント実装 for Django](https://www.slideshare.net/shimizukawa/a-multitenant-implementation-using-rls-for-django)
 - [Multi-tenant SaaS database tenancy patterns](https://learn.microsoft.com/en-us/azure/azure-sql/database/saas-tenancy-app-design-patterns?view=azuresql-db)
 - [GoでPostgreSQLのRLS(Row Level Security)を実装してみた](https://zenn.dev/yunbopiao/articles/c5548a672c44f8)
