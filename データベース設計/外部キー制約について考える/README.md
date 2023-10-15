@@ -118,12 +118,20 @@ ON SET NULLを使用して、department_idに対してnull値を与えるか、�
 #### MySQLとPostgreSQLのrestrictとno actionの違いを調査する
 
 - MySQL
-  - `RESTRICT`と`NO ACTION`は同等
+  - `RESTRICT`と`NO ACTION`は同じ
 - PostgreSQL
   - `RESTRICT`は制約チェックを即時に実行
-  - `NO ACTION`は外部キー制約のチェックを遅延できる(DEFERRABLEを使用)
+  - `NO ACTION`は外部キー制約のチェックを遅延できる(DEFERRABLEを使用すれば)
     - 制約にDEFERABLEが設定されると、トランザクション終了時までチェックを遅延できる
     - この[記事](httpss://plaza.rakuten.co.jp/gontata/diary/200806100000/)がわかりやすいです。
 
 ### 課題3
 
+#### 外部キー制約に関するクイズを3問作成してみてください
+
+1. 質問1: 外部キー制約が一切ないと何が困るのか？ PlanetScaleを例に調査してみたください。
+2. 質問2: 外部キー制約を使用していないときに出現するアンチパターンを列挙してください。
+3. 質問3: PostgreSQLで、下記3つの制約に付与される性質について調べてください。
+   1. DEFERRABLE INITIALLY DEFERRED
+   2. DEFERRABLE INITIALLY IMMEDIATE
+   3. NOT DEFERRABLE
