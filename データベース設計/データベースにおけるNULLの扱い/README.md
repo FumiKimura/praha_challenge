@@ -77,6 +77,8 @@ default値(この場合は0)を与えてあげるとわかりやすいです。
 上の例はデータ表現から説明しましたが、自動でNullを算出から排除してくれることもあり、クエリがシンプルになります。
 - NullだとAVG(平均)の計算から自動的に排除されるが、デフォルト値だと結果を偏らせる[ケース](https://www.ibm.com/docs/en/db2-for-zos/12?topic=columns-when-use-null-default-values)
 
+この[記事](https://zenn.dev/praha/articles/1f8a571d4bbdc2)が参考になりました。
+
 ### 課題4
 
 ```
