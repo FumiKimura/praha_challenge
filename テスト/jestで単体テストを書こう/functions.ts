@@ -1,4 +1,4 @@
-import { randomIntegersApiService } from "./testApiService";
+import { randomIntegersApiService } from "./randomIntegersApiService";
 import { RandomIntegerArrayMock } from "./util";
 
 /*

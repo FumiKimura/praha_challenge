@@ -6,7 +6,6 @@ export class randomIntegersApiService {
             "http://www.randomnumberapi.com/api/v1.0/random"
             + `?min=${min}&max=${max}&count=${count}`
         );
-        console.log(data);
-        return data;
+        return data as number[];
     }
 }

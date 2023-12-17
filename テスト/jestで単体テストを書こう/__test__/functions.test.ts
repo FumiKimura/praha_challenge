@@ -1,6 +1,6 @@
 import {describe, expect, test} from '@jest/globals';
 import { sumOfSquare, sumOfSquareFromApi } from '../functions';
-import { randomIntegersApiService } from '../testApiService';
+import { randomIntegersApiService } from '../randomIntegersApiService';
 
 /*
 * #1 sumOfSquareのテストを書いてください
@@ -46,5 +46,5 @@ import { randomIntegersApiService } from '../testApiService';
 * 2. randomIntegersApiServiceをmockしてください
 */
 // describe('test sumOfSquareFromApi', () => {
-   
+// 
 // });
