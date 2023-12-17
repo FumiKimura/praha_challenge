@@ -178,9 +178,12 @@ AAA (Arrange-Act-Assert)を知らなかったのでメモ
 参考:[ユニットテストの保守性を作りこむ](http://infog.0ch.biz/download/iseri_xpjugkansai2011.pdf)
 参考:[現在時刻が関わるユニットテストから、テスト容易性設計を学ぶ](https://t-wada.hatenablog.jp/entry/design-for-testability)
 
-#### 何らかの引数を受け取り、何らかの値を返却する関数を3つ作成、jestに関するクイズも3つ作成
+#### クイズ
+
+1. 何らかの引数を受け取り何らかの値を返却する関数を3つ作成
 
 
+
+2. jestに関するクイズも3つ作成
 
 #### OSSライブラリのテストケースから3つ学んだことを挙げる
-
