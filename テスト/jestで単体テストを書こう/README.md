@@ -4,7 +4,7 @@
 完了!
 
 ### 課題2 (実装)
-課題2の[PR](https://github.com/FumiKimura/praha-challenge-templates/pull/1)は分けてあります。
+課題2の[PR](https://github.com/FumiKimura/praha-challenge-templates/pull/1)を分けてあります。
 
 ### 課題3 (質問)
 
@@ -175,15 +175,21 @@ AAA (Arrange-Act-Assert)を知らなかったのでメモ
    5. テスト時間を計測し、改善を加える
 
 参考:[Unit Test Performance Optimization](https://medium.com/@dileeppandiya/unit-test-performance-optimization-7e87aaec9dae)
+
 参考:[ユニットテストの保守性を作りこむ](http://infog.0ch.biz/download/iseri_xpjugkansai2011.pdf)
+
 参考:[現在時刻が関わるユニットテストから、テスト容易性設計を学ぶ](https://t-wada.hatenablog.jp/entry/design-for-testability)
+
 
 #### クイズ
 
 1. 何らかの引数を受け取り何らかの値を返却する関数を3つ作成
 
-
+      `functions.ts`を確認してください。
 
 2. jestに関するクイズも3つ作成
+   1. jestが出力するカバレッジの種類を説明してください。
+   2. jest.SpyOnの挙動と使い方について例をつけて説明してください。
+   3. jestのIssuesから`Feature Request`を一つピックアップして、なぜ必要なのか説明してください。(Issue内で反対意見もあれば面白いですね)
 
 #### OSSライブラリのテストケースから3つ学んだことを挙げる
