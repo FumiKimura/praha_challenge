@@ -33,16 +33,14 @@ export const ButtonComponent: React.FC<ButtonComponentProps> = ({
   onClick,
 }) => {
   return (
-    <div>
-      <Button
-        size={size}
-        color={mapColorToTheme(color)}
-        disabled={disabled}
-        variant="contained"
-        onClick={onClick}
-      >
-        {children}
-      </Button>
-    </div>
+    <Button
+      size={size}
+      color={mapColorToTheme(color)}
+      disabled={disabled}
+      variant="contained"
+      onClick={onClick}
+    >
+      {children}
+    </Button>
   );
 };
