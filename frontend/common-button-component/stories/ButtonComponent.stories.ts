@@ -6,7 +6,6 @@ export default {
   parameters: {
     layout: "centered",
   },
-  argTypes: { onClick: { action: "clicked" } },
   tags: [],
   addons: ["@storybook/addon-actions"],
 };

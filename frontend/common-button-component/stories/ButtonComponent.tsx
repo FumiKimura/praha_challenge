@@ -25,13 +25,13 @@ const mapColorToTheme = (color: Color) => {
   }
 };
 
-export const ButtonComponent: React.FC<ButtonComponentProps> = ({
+export const ButtonComponent = ({
   children,
   color,
   size,
   disabled,
   onClick,
-}) => {
+}): JSX.Element => {
   return (
     <Button
       size={size}
