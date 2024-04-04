@@ -49,4 +49,12 @@ function Compare() {
   );
 }
 
+// パフォーマンスを計測する関数を追加
+function measurePerformance(func: () => void): number {
+  const startTime = window.performance.now();
+  func();
+  const endTime = window.performance.now();
+  return endTime - startTime;
+}
+
 export default Compare;
