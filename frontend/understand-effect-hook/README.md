@@ -68,3 +68,22 @@ export const FetchComponent = () => {
   );
 };
 ```
+
+## 課題 4
+
+`useEffectに関するクイズを作成してください`
+
+count が 0 から 1 に変化した場合の出力はどうなりますか。
+
+```
+useEffect(() => {
+  console.log('side effect count: ' count)
+  return () => {
+    console.log('cleanup count: ', count);
+  };
+}, [count]);
+```
+
+答え:
+cleanup count: 0
+side effect count: 1
