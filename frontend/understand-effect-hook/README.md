@@ -9,3 +9,23 @@
   - 空の配列（[]）を指定した場合 -> コンポーネントのマウント時のみに処理が走る
 
 参考: [React useEffect Cleanup Function](https://refine.dev/blog/useeffect-cleanup/#introduction)
+
+## 課題 2
+
+someFlag が True の際にのみ count を加算する処理を追加。
+
+```
+import { useState, useEffect } from "react";
+
+export const SomeComponent = ({ someFlag }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (someFlag) {
+      setCount((curCount) => curCount + 1);
+    }
+  }, [someFlag, count]);
+
+  return <p>レンダリング回数: {count}</p>;
+};
+```
