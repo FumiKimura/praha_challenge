@@ -29,3 +29,42 @@ export const SomeComponent = ({ someFlag }) => {
   return <p>レンダリング回数: {count}</p>;
 };
 ```
+
+## 課題 3
+
+第２引数に空配列を指定することでマウント時のみにフックが処理される。
+
+```
+import { useEffect, useState } from "react";
+
+export const FetchComponent = () => {
+  const [data, setData] = useState({
+    subscribers: 0,
+    stars: 0,
+  });
+
+  // ここでuseEffectを  使ってstar数を取得してみましょう!
+  useEffect(() => {
+    fetch("https://api.github.com/repos/facebook/react")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setData({
+          subscribers: data["subscribers_count"],
+          stars: data["watchers_count"],
+        });
+      })
+      .catch(() => {
+        console.log("failed to fetch data");
+      });
+  }, []);
+
+  return (
+    <div>
+      <p>ここにReactのGitHubレポジトリに付いたスターの数を表示してみよう</p>
+      <p>{data.stars} stars</p>
+    </div>
+  );
+};
+```
