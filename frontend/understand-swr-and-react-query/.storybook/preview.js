@@ -1,10 +1,8 @@
 /** @type { import('@storybook/react').Preview } */
-import { QueryClient, ReactQueryCacheProvider } from '@tanstack/react-query';
 import { initialize, mswLoader } from 'msw-storybook-addon';
 
 // Initialize MSW
 initialize();
-const queryCache = new QueryClient();
 
 const preview = {
   parameters: {
