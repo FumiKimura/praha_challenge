@@ -9,7 +9,7 @@ const getStars = async () => {
   return response.data.stargazers_count ?? 'データがありませんでした';
 };
 
-export const FetchComponent = () => {
+const FetchComponent = () => {
   const { data, error, isLoading } = useQuery({
     queryKey: ['getStars'],
     queryFn: getStars,
@@ -25,3 +25,5 @@ export const FetchComponent = () => {
     </div>
   );
 };
+
+export default FetchComponent;
