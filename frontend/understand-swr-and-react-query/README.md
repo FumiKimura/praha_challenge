@@ -1,0 +1,55 @@
+## 課題 1
+
+`SWRやReact Queryが生まれた背景を調べてください。`
+
+SWR や React Query が生まれる前では Server State を Client State か、Global state で管理するが必要であり、基本的にサーバーデータの管理は Global state(例: Redux)によって行われていた。しかし、Client State と Global State は、クライアント側が完全に所有している状態なので、サーバーで管理されている非同期な状態(Server State)を管理するには適さず、キャッシュを有効活用することで Server State が管理できるよう React Query(用途的には SWR も同じ)が開発された。
+
+参考: [React Query はデータフェッチライブラリではない。非同期の状態管理ライブラリだ。](https://qiita.com/taisei-13046/items/05cac3a2b4daeced64aa)
+
+```
+問1. 必要なデータを一箇所で取得してからpropsでコンポーネントに渡して行った方がシンプルじゃないですか？
+データを一箇所で取得して、コンポーネントに渡すかはデータ自体の利用範囲による。一つのコンポーネントでしかデータが利用されないのであれば、React Queryの機能を活用した方がキャッシュ管理ができるので効率が高まる。しかし、ユーザー情報など複数階層でデータが利用される場合は、一箇所(上位コンポーネント)で取得し引き渡した方がよい。引き渡し方としてReact Contextを使う手段がある。データ引き渡しのコスト・ベネフィットと、React Queryを使用してコンポーネント内で閉じた形の場合のコスト・ベネフィットを比較する必要がある。条件としてどれだけ複数コンポーネントに跨ったデータ管理がどれだけあるかによるのでは。
+
+問2. SWRとかReact Queryを使うと、描画のタイミングでデータ取得が始まってしまうからコンポーネント単位でテストしづらくなりませんか？
+React Queryを使用したコンポーネントをテストしたい場合、レスポンスデータをMockingすればコンポーネント単位のテストが可能になる。
+導入の際には、現状テストに使っているコストと比較して検討する必要がる。
+
+問3. SWRを使ってデータの取得と描画に関する責務を一つのコンポーネントにまとめてしまうのはSRP（単一責任原則）に違反している気がします。
+データ取得と描画に関する責務を一つのコンポーネントにまとめてしまうのはSRP違反になるかは、ソフトウェア設計に依存していて、SWRが起因しているとは限らない。具体的には、SWRを使わずデータ取得と描画をコンポーネント内で実行することはFetch, Axiosを使用すれば可能なので、SWRに限った話ではない。
+
+依存関係がコンポーネントからSWRなのであれば、
+例: コンポーネント -> SWR
+
+依存関係の逆転を利用してコンポーネントがインターフェースに依存し、SWRがインターフェースに依存する形を作り疎結合な関係性を作る
+例: コンポーネント -> インターフェース <- SWR
+```
+
+## 課題 2
+
+`SWR（あるいはReact Query）を使って書き換えてみましょう`
+
+```
+const getStars = async () => {
+  const response = await axios.get(
+    'https://api.github.com/repos/facebook/react'
+  );
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  return response.data.stargazers_count ?? 'データがありませんでした';
+};
+
+export const FetchComponent = () => {
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['getStars'],
+    queryFn: getStars,
+  });
+
+  if (isLoading) return <div>downloading...</div>;
+  if (error) return <div>An error occurred: {error.message}</div>;
+
+  return (
+    <div>
+      <p>ここにReactのGitHubレポジトリに付いたスターの数を表示してみよう</p>
+      <p>{data}個のスターでした。</p>
+    </div>
+  );
+```
