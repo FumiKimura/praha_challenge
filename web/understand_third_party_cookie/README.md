@@ -34,3 +34,17 @@
 クッキーは同一ドメインであれば、port 間で共有されるのでファーストパーティクッキーと見なされます。ファーストパーティ/サードパーティクッキーの区別は基本的にはドメイン名によって決まります。
 
 ### 課題２（実装）
+
+`first-party-cookie-server`と`third-party-cookie-server`を確認してください。
+
+概要: first-party-cookie はサイトの HTML ファイルを返却し、third-party-cookie は image を返却しサードパーティクッキーをブラウザに設定します。
+
+起動方法:
+
+```
+1. $ ngrok 4000
+2. $ ./first-party-cookie-server/public/cookie-cat.htmlのimg srcを"{ngrok_url}/cookie-cat-image"に書き換える
+3. $ node ./first-party-cookie-server/index.js
+4. $ node ./third-party-cookie-server/index.js
+5. ブラウザでlocalhost:3000をロードしてください
+```
