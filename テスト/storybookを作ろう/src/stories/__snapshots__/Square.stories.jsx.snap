@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Square Default smoke-test 1`] = `
+<button class="square">
+</button>
+`;

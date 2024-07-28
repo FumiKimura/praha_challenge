@@ -8,7 +8,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "react": "^18.0.0",
@@ -25,6 +26,7 @@
     "@storybook/react": "^7.6.6",
     "@storybook/react-webpack5": "^7.6.6",
     "@storybook/test": "^7.6.6",
+    "@storybook/test-runner": "^0.19.1",
     "babel-loader": "8.1.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.6.6",
