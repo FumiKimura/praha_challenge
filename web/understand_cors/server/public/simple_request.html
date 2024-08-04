@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CORS Simple Request Example</title>
+  </head>
+  <body>
+    <h1>CORS Example</h1>
+    <div id="response"></div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        fetch('http://localhost:3000', {
+          method: 'POST',
+        })
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById('response').innerText = data;
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      });
+    </script>
+  </body>
+</html>
