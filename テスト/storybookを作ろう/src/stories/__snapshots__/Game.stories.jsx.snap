@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game Default smoke-test 1`] = `
+<div class="game">
+  <div class="game-board">
+    <div class="status">
+      次のプレーヤー: X
+    </div>
+    <div class="board-row">
+      <button class="square">
+      </button>
+      <button class="square">
+      </button>
+      <button class="square">
+      </button>
+    </div>
+    <div class="board-row">
+      <button class="square">
+      </button>
+      <button class="square">
+      </button>
+      <button class="square">
+      </button>
+    </div>
+    <div class="board-row">
+      <button class="square">
+      </button>
+      <button class="square">
+      </button>
+      <button class="square">
+      </button>
+    </div>
+  </div>
+  <div class="game-info">
+    <ol>
+      <li>
+        <button>
+          Go to game start
+        </button>
+      </li>
+    </ol>
+  </div>
+</div>
+`;

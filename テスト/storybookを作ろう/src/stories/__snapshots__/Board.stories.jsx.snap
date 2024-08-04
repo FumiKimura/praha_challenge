@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board Default smoke-test 1`] = `
+<div class="status">
+  次のプレーヤー: X
+</div>
+<div class="board-row">
+  <button class="square">
+  </button>
+  <button class="square">
+  </button>
+  <button class="square">
+  </button>
+</div>
+<div class="board-row">
+  <button class="square">
+  </button>
+  <button class="square">
+  </button>
+  <button class="square">
+  </button>
+</div>
+<div class="board-row">
+  <button class="square">
+  </button>
+  <button class="square">
+  </button>
+  <button class="square">
+  </button>
+</div>
+`;
