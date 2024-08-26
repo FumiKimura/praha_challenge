@@ -18,6 +18,28 @@
 ### このconfigを読み込んで、適当なプロジェクトでlintをかけてみましょう
 
 ```
+const http = require("http");
+
+const PORT = 3000;
+
+function handleRequest(request, response) {
+  if (request.url === "/") {
+    response.writeHead(200, { "Content-Type": "text/plain" });
+    response.end("Hello World");
+  } else {
+    response.writeHead(404, { "Content-Type": "text/plain" });
+    response.end("Not Found");
+  }
+}
+
+http.createServer(handleRequest).listen(PORT, () => {
+  console.log("Server running on port " + PORT);
+});
+
+var unusedVar = "This variable is not used";
+```
+
+```
 /Users/fumi.kimura/repos/praha_challenge/team-dev/use_linter/sample/index.js
    1:22  error    Strings must use singlequote                                     quotes
    6:23  error    Strings must use singlequote                                     quotes
