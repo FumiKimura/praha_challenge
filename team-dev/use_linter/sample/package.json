@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint-index-file": "eslint index.js"
+    "lint": "eslint . --ext .js",
+    "prepare": "cd ../../.. && husky team-dev/use_linter/sample/.husky"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +18,11 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "eslint-plugin-react": "^7.35.0",
-    "eslint-plugin-react-hooks": "^4.6.2"
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "husky": "^9.1.5",
+    "lint-staged": "^15.2.9"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "npx eslint"
   }
 }
