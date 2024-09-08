@@ -1,0 +1,21 @@
+{
+  "name": "use-ci",
+  "version": "1.0.0",
+  "description": "## 課題1（実装）",
+  "main": "problem-1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
