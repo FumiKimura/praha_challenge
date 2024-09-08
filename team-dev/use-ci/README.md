@@ -72,9 +72,9 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Run integration tests
-        run: npm test
+        
+      - name: Run migration
+        run: npx sequelize-cli db:migrate
         env:
           POSTGRES_HOST: localhost
           POSTGRES_PORT: 5432
@@ -82,6 +82,9 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           NODE_ENV: test
+
+      - name: Run integration tests
+        run: npm test
 ```
 
 [参考: PostgreSQLサービスコンテナの作成](https://docs.github.com/ja/actions/use-cases-and-examples/using-containerized-services/creating-postgresql-service-containers)
