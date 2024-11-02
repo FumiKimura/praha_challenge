@@ -10,7 +10,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
-    "chromatic": "chromatic"
+    "chromatic": "chromatic",
+    "cy-open": "cypress open"
   },
   "dependencies": {
     "react": "^18.0.0",
@@ -30,6 +31,7 @@
     "@storybook/test": "^7.6.6",
     "@storybook/test-runner": "^0.19.1",
     "babel-loader": "8.1.0",
+    "cypress": "^13.13.1",
     "prop-types": "^15.8.1",
     "storybook": "^7.6.6",
     "webpack": "^5.89.0"
