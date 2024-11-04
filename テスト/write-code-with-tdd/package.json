@@ -1,0 +1,15 @@
+{
+  "name": "write-code-with-tdd",
+  "version": "1.0.0",
+  "description": "TDD（テスト駆動開発）でコードを書いてみる",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
