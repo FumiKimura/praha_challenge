@@ -429,3 +429,50 @@ SQL にビジネスロジックを実装させ処理する場合:
 具体的には SQL で特定ユーザーの 1 年以内の購入履歴を取得し、それ以上の処理はアプリケーションレイヤーに任せる。
 
 ## 課題 3（カプセル化）
+
+```
+class Person {
+    public name: string
+    public starWorkingAt: Date
+    constructor(name: string, startWorkingAt: Date) {
+        this.name = name
+        this.starWorkingAt = startWorkingAt
+    }
+}
+
+class Company {
+    public people: Person[]
+    constructor(people: Person[]) {
+        this.people = people
+    }
+}
+
+const company = new Company([new Person('a', new Date('2021-01-01')), new Person('b', new Date('2021-01-1'))])
+const firstPerson = company.people[0]
+
+// 何らかのロジックに使用するため、Person Aの勤務開始日を取り出す
+const date = firstPerson.starWorkingAt
+
+// さまざまなロジックで使用しているなかで誤って更新してしまう
+date.setFullYear(1000)
+firstPerson.name = 'modified name'
+
+console.log(company) // companyの中に含まれていたPerson Aの勤務開始日が変わってしまう！
+```
+
+#### この設計にはどのような問題が潜んでいるでしょうか？
+
+1. カプセル化不足
+   1. Getter/Setter を追加するだけでは、外部から自由に値を操作可能な状態が続く
+2. 防御的コピーの重要性
+   1. Getter で直接 Date オブジェクトを返す場合、外部で変更されると内部データにも影響する
+
+#### どうすれば解決できると思いますか？
+
+1. 外部からプロパティをアクセスできないように private に変更する
+2. Getter で値を変更する際は防御的コピーを使う([【Java】不変オブジェクトの作り方　参照の隠蔽と防衛的コピー](https://qiita.com/chooyan_eng/items/ba934145c30419c3cba6))
+3. 値を変更する際はバリデーションを追加する
+
+#### 同じ課題を渡された新人エンジニアが「わかりました！getter と setter を定義すれば良いんですね！」と言ってきました。なぜそれが問題を解決していないのか教えてあげましょう
+
+Getter と Setter を追加しただけでは、プロパティでアクセスしているのと本質的には変化がなく、カプセル化の恩恵を受けれていない。カプセル化とは、関連するデータ（属性）とそれに対する操作（メソッド）を一つのオブジェクトとしてまとめ、外部からの直接的なアクセスを制限する仕組みを指します。
