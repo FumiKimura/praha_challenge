@@ -379,4 +379,53 @@ class Purchase {
 
 ## 課題 2（SQL に漏れたドメインルール）
 
+サンプルコード:
+
+```
+interface Purchase {
+  userId: string
+  productId: string
+  transaction: {
+    succeeded: true
+    completedAt: Date
+  }
+}
+
+interface PaymentRecordRepo {
+  getPurchasesBy: (userId: string) => Purchase[]
+}
+
+class PurchaseService {
+  public constructor(private paymentRecordRepo: PaymentRecordRepo) {}
+
+  public purchase(userId: string, productId: string) {
+    const allPurchases = this.paymentRecordRepo.getPurchasesBy(userId)
+    const pastPurchase = allPurchases.find((p) => p.productId === productId && p.transaction.succeeded)
+    if (pastPurchase) {
+      throw new Error('この商品はおひとりさま一品限定です！')
+    }
+
+    // 購入手続きに進む
+  }
+}
+```
+
+アプリケーション側で処理する場合:
+
+条件: ビジネスロジックが存在する箇所を一箇所に集中させる。複雑なロジックや今後頻繁に変更される可能性がある。
+
+- ロジックが一箇所に記述されるので保守性が向上
+- データ量が多くなると処理に時間がかかる。実際のデータ量を計測することが必要
+
+SQL にビジネスロジックを実装させ処理する場合:
+
+条件: 取得するデータ量が多くサーバー側の処理負担が大きい。またシンプルな SQL 文で済む場合。
+
+- データベース側に処理をある程度委託できるので処理負荷が限定される
+- ビジネスロジックがアプリケーション以外(インフラ寄り)に分散する
+- 複雑なビジネスロジックだと SQL クエリが肥大化する
+
+あるいは、SQL クエリはシンプルさを維持して複雑なビジネスロジックはアプリケーションレイヤーに処理を任せる。
+具体的には SQL で特定ユーザーの 1 年以内の購入履歴を取得し、それ以上の処理はアプリケーションレイヤーに任せる。
+
 ## 課題 3（カプセル化）
