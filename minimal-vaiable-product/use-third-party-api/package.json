@@ -1,0 +1,23 @@
+{
+  "name": "use-third-party-api",
+  "version": "1.0.0",
+  "description": "課題1",
+  "main": "index.js",
+  "scripts": {
+    "cli": "npx tsx index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.1.1",
+    "commander": "^13.1.0",
+    "dotenv": "^16.4.7"
+  },
+  "type": "module"
+}
